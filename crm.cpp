@@ -183,5 +183,60 @@ return t;
 
 void product::list_of_items(void)
 {
+    clrscr();
+    fstream file;
+    file.open("product.dat", ios::in);
+    file.seekg(0);
+    int row = 6, found = 0;
+    gotoxy(30,2);
+    cout << "List of Items:";
+    gotoxy(3,4);
+    cout << "Item Code | Item Name | Item Cost | Item Price";
+    gotoxy(2,5);
+    cout << "********************************************************";
+    while(file.read((char*)this, sizeof(product)))
+    {
+        delay(10);
+        found = 1;
+        gotoxy(5,row);
+        cout << itemcode;
+        gotoxy(14,row);
+        cout << itemname;
+        gotoxy(37,row);
+        cout << itemcost;
+        cout << itemprice;
+        if(row == 22)
+        {
+            row = 5;
+            gotoxy(1,25);
+            cout << "Press any key to continue...";
+            getche();
+            clrsrc();
+            gotoxy(30,2);
+            cout << "List of Items";
+            gotoxy(3,4);
+            cout << "Item Code | Item Name | Item Cost | Item Price";
+            gotxy(2,5);
+            cout << "********************************************************";   
+        }
+        else
+            row++;
+    }
+    if(!found)
+    {
+        gotoxy(5,10);
+        cout << "\7Records Not Found.";
+    }
+    gotoxy(1,25);
+    cout << "Press any key to continue...";
+    getche();
+    file.close();
+}
+
+
+//Function adds products to (product.dat)
+
+void product::add_item(void)
+{
     
 }
