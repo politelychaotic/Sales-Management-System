@@ -225,7 +225,7 @@ void product::list_of_items(void)
     if(!found)
     {
         gotoxy(5,10);
-        cout << "\7Records Not Found.";
+        cout << "\nRecords Not Found.";
     }
     gotoxy(1,25);
     cout << "Press any key to continue...";
